@@ -71,4 +71,4 @@ is called the coefficient matrix. The vector
 x = ⎡x⎤
     ⎣y⎦
 ```
-is the vector of unknowns, and the vector on the right hand side of the equation form the vector `b`.
+is the vector of unknowns, and the values on the right hand side of the equation form the vector `b`.
