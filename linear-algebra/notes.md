@@ -24,8 +24,8 @@ x -  y = -1
 ```
 can be represented as matrices like this:
 ```
-⎡0⎤⋅x + ⎡ 3⎤⋅y = ⎡ 6⎤
-⎣1⎦     ⎣-1⎦     ⎣-1⎦
+⎡0  3⎤ ⎡x⎤ = ⎡ 6⎤
+⎣1 -1⎦ ⎣y⎦   ⎣-1⎦
 
       Ax       =   b
 ```
@@ -47,4 +47,28 @@ Plot equations on coordinate plane. With two unknowns (two dimensions) the solut
 As the number of unknowns or variables increases, plotting them becomes more and more difficult, so the row method is helpful to understand what is going on with easy examples, but not actually useful when trying to solve complicated equations with multiple variables.
 
 ### Column method
-Express the equations in matrix notation, and from there try to find the coefficients that solve the system.
+Express the equations as vectors of each variable, plot each vector and finally add them together. The result will be the solutions for the variables.
+```
+⎡0⎤⋅x + ⎡ 3⎤⋅y = ⎡ 6⎤
+⎣1⎦     ⎣-1⎦     ⎣-1⎦
+```
+
+### Matrix method
+Write the system of equations as a matrix:
+```
+⎡0  3⎤ ⎡x⎤ = ⎡ 6⎤
+⎣1 -1⎦ ⎣y⎦   ⎣-1⎦
+```
+and solve.
+
+The matrix
+```
+⎡0  3⎤
+⎣1 -1⎦
+```
+is called the coefficient matrix. The vector
+```
+x = ⎡x⎤
+    ⎣y⎦
+```
+is the vector of unknowns, and the vector on the right hand side of the equation form the vector `b`.
