@@ -12,7 +12,7 @@ DIFFICULTY = 1_000_000
 GOAL = MAXIMUM / DIFFICULTY
 NUM_HASHES = 5
 
-NUM_THREADS = 4
+NUM_THREADS = 2
 
 def start_thread(thread_idx, queue)
   thread = Thread.new do
@@ -21,7 +21,7 @@ def start_thread(thread_idx, queue)
     while true
       hash = Digest::MD5.hexdigest(string).to_i(16)
       if hash < GOAL
-        queue << [string, hash]
+        queue << [string, hash, thread.to_s]
       end
 
       string = hash.to_s
@@ -34,7 +34,7 @@ end
 # "thread safe" queue
 results = Queue.new
 threads = []
-NUM_THREADS.times { |thread_idx| start_thread(thread_idx, results) }
+NUM_THREADS.times { |thread_idx| threads << start_thread(thread_idx, results) }
 
 NUM_HASHES.times do
   result = results.shift
