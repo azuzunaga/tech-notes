@@ -8,16 +8,20 @@ class RequestServer
     @data_store = data_store
     @request_server = TCPServer.new(port)
     @read_only = read_only
+    @thread = nil
   end
 
   def run!
-    loop do
-      connection = @request_server.accept
-      handle_client_connection!(connection)
+    @thread = Thread.new do
+      loop do
+        connection = @request_server.accept
+        Thread.new { handle_client_connection!(connection) }
+      end
     end
   end
 
   def join
+    @thread.join
   end
 
   def handle_client_connection!(connection)
