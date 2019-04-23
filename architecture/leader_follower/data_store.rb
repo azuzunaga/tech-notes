@@ -6,14 +6,17 @@ class ReadOnlyException < Exception; end
 class DataStore
   def initialize
     @data = Hash.new(0)
+    @log_lines = []
   end
 
   def increment(key)
     @data[key] += 1
+    @log_lines << "INCREMENT #{key}"
   end
 
   def square(key)
     @data[key] *= @data[key]
+    @log_lines << "SQUARE #{key}"
   end
 
   def get(key)
@@ -39,7 +42,7 @@ class DataStore
     end
   end
 
-  def get_log_lines(start_position)
-    # TODO: implement with followers.
+  def get_new_log_lines(start_position)
+    @log_lines[start_position..-1]
   end
 end
