@@ -10,12 +10,12 @@ class DataStore
   end
 
   def increment(key)
-    @data[key] += 1
+    @data[key] = (1 + @data[key]) % 1_000_000
     @log_lines << "INCREMENT #{key}"
   end
 
   def square(key)
-    @data[key] *= @data[key]
+    @data[key] = (@data[key] * @data[key]) % 1_000_000
     @log_lines << "SQUARE #{key}"
   end
 
